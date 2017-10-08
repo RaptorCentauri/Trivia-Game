@@ -1,0 +1,99 @@
+#wrapper{
+	/*display: flex;*/
+	/*justify-content: center;*/
+	/*align-items: center;*/
+	margin: 0;
+	padding: 0;
+}
+
+/*styles the card with basic styles*/
+
+
+.card.flip .front{
+	animation: flip 0.5s ease-in forwards;
+}
+
+.card.flip .back{
+	animation: flip 0.5s 0.5s ease-out forwards reverse;
+}
+/*============================================*/
+
+/*styles the front of the card*/
+	.front{
+		width: 800px;
+		height: 800px;
+		background-color: #E6E6E6;
+		border-radius: 25px;
+
+		position: absolute;
+		display: grid;
+		grid-template-rows: 100px repeat(4, 1fr) 25px;
+		grid-row-gap: 5px;
+		/*transform: rotateY(180deg);*/	
+	}
+/*========================================*/
+
+/*Styles the back of the card*/
+	.back{
+		width: 800px;
+		height: 800px;
+		background-color: #E6E6E6;
+		border-radius: 25px;
+		display: grid;
+		grid-template-rows: 100px 1fr;
+		grid-row-gap: 5px;
+
+		transform: rotateY(90deg);
+	}
+
+	.correctAnswer{
+		align-self: center;
+		justify-self: center;
+		font-size: 300%;
+		color: #4C4C4C;
+	}
+/*==================================*/
+
+/*Styles the button*/
+	.button{
+		background-color:#CCCCCC;
+		height: 100%;
+		width: 100%;
+		align-self: center;
+		border: none;
+		font-size: 200%;
+		color: #4C4C4C; 
+	}
+
+	.button:active{
+		background-color: #808080;
+		color: #CCCCCC;
+	}
+/*===============================*/
+
+/*Styles the card title*/
+	.title{
+	width: 100%;
+	background-color: #4C4C4C;
+	height: 100px;
+	padding: 0;
+	margin: 0;
+	border-radius: 25px 25px 0 0;
+	border-bottom: 5px #666666 solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 300%;
+	color: #E6E6E6;
+	}
+/*======================================*/
+
+
+
+
+
+
+@keyframes flip{
+	0%{transform: rotateY(0deg);}
+	100%{transform: rotateY(90deg);}
+}
