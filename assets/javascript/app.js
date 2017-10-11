@@ -154,15 +154,23 @@ function buildQuestion(i){
 
 
 function flip(){
+	console.log(`{======Begin Flip====}`);
+
 	console.log(`flip: ${i}`);
 	$(".card").toggleClass("flip");
 	setTimeout(flipBack, 1000*5);
+	console.log(`{======End Flip====}`);
+
 }
 
 function flipBack(){
+	console.log(`{======Begin FlipBack====}`);
+
 	console.log(`flipBack: ${i}`);
 	$(".front").html("");
 	$(".card").toggleClass("flip");	
+	console.log(`{======End FlipBack====}`);
+
 }
 
 
@@ -176,17 +184,20 @@ function playGame(i){
 }
 
 for (i=0; i<triviaList.length; i++){
+	console.log(`{======Begin Loop====}`);
 	playGame(i);
+	console.log(`{======End Loop=====}`);
 }
 
 
 
-// setTimeout(function(){
-// 	alert("Work damnit");
-// }, 1000* 2);
-
-
-// gameTimer();
-
+//Should run as follows:
+//Play game 0
+//build question 0
+//flip 0
+//flipBack 0
+//Play game 1
+//build question 1
+//etc. 
 
 
