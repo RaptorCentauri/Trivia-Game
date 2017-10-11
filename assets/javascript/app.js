@@ -12,7 +12,18 @@
 //Questions
 //We will achieve this with objects and arrays
 triviaList = [{
+
 	question: "Question 1",
+	answers: {
+		correct: "Clark Kent",
+		answer2: "BLOR BLOR",
+		answer3: "BLARG BLARG",
+		answer4: "BLoOOOP"
+		}
+	},
+
+	{
+	question: "Question 2",
 	answers: {
 		correct: "BLAH BLAH",
 		answer2: "BLOR BLOR",
@@ -21,65 +32,161 @@ triviaList = [{
 		}
 	},
 
- // question: "Question 2",
-	// answers: [{
-	// 	correct: "BLAH BLAH",
-	// 	answer2: "BLOR BLOR",
-	// 	answer3: "BLARG BLARG"
-	// 	}]
-	// }, 
+	{
+	question: "Question 3",
+	answers: {
+		correct: "BLAH BLAH",
+		answer2: "BLOR BLOR",
+		answer3: "QUAAAAACKK",
+		answer4: "BLoOOOP"
+		}
+	},
 
-]
+	{
+	question: "Question 4",
+	answers: {
+		correct: "BLAH BLAH",
+		answer2: "BLOR BLOR",
+		answer3: "BLARG BLARG",
+		answer4: "BLoOOOP"
+		}
+	},
+
+	{
+	question: "Question 5",
+	answers: {
+		correct: "BLAH BLAH",
+		answer2: "BLOR BLOR",
+		answer3: "BLARG BLARG",
+		answer4: "BLoOOOP"
+		}
+	},
+
+	{
+	question: "Question 6",
+	answers: {
+		correct: "BLAH BLAH",
+		answer2: "BLOR BLOR",
+		answer3: "BLARG BLARG",
+		answer4: "BLoOOOP"
+		}
+	},
+
+	{
+	question: "Question 7",
+	answers: {
+		correct: "BLAH BLAH",
+		answer2: "BLOR BLOR",
+		answer3: "BLARG BLARG",
+		answer4: "BLoOOOP"
+		}
+	},
+
+	{
+	question: "Question 8",
+	answers: {
+		correct: "BLAH BLAH",
+		answer2: "BLOR BLOR",
+		answer3: "BLARG BLARG",
+		answer4: "BLoOOOP"
+		}
+	},
+
+	{
+	question: "Question 9",
+	answers: {
+		correct: "BLAH BLAH",
+		answer2: "BLOR BLOR",
+		answer3: "BLARG BLARG",
+		answer4: "BLoOOOP"
+		}
+	},
+
+	{
+	question: "Question 10",
+	answers: {
+		correct: "BLAH BLAH",
+		answer2: "BLOR BLOR",
+		answer3: "BLARG BLARG",
+		answer4: "BLoOOOP"
+		}
+	},
+];
 
 
 
-			
-			
-// for key in triviaList[i].answers
+
+function buildQuestion(i){
+	$(".question").html(triviaList[i].question);
+
+		console.log(`turn: ${i}`);
+
+		for (key in triviaList[i].answers){
+			$(".front").append(`<button class="button" data-choice_id="${key}"><span class='answer'>${triviaList[i].answers[key]}</span></button>"`);
+
+		}
+
+
+		$(".button").on("click", function(){
+
+			if($(this).data("choice_id") === "correct"){
+				console.log("YAYA!!!!");
+				$(".result").html("Correct!");
+				$(".answerBack").html("The answer was " + triviaList[i].answers.correct + "!");
+				// $(".card").toggleClass("flip");
+				
+
+			}
+
+			else{
+				console.log("NONONONONON!");
+				$(".result").html("Wrong!");
+				console.log(triviaList[i].answers.correct);
+				$(".answerBack").html("The answer was " + triviaList[i].answers.correct + "!");
+				// $(".card").toggleClass("flip");
+			}
+		});
+
+		// setTimeout(function(){$(".card").toggleClass("flip");}, 1000*3);
+};
 
 
 
-//Put the question in the title
-$(".question").html(triviaList[0].question);
 
+function flip(){
+	console.log(`flip: ${i}`);
+	$(".card").toggleClass("flip");
+	setTimeout(flipBack, 1000*5);
+}
 
-//creates the answer buttons
-for (i=0; i< triviaList.length; i++){
-			// console.log("hellow world parent");
-
-	for (key in triviaList[i].answers){
-		$(".front").append("<button class='button' data-choice_id=" + key + "><span class='answer'  >" + triviaList[i].answers[key] + "</span></button>");
-		// $(".answers").attr("data-answer_id", key);
-	}
-
+function flipBack(){
+	console.log(`flipBack: ${i}`);
+	$(".front").html("");
+	$(".card").toggleClass("flip");	
 }
 
 
-$(".button").on("click", function(){
-
-	// console.log(this);
-
-	if($(this).data("choice_id") === "correct"){
-		console.log("YAYA!!!!");
-		$(".card").toggleClass("flip");
-	}
-
-	else{
-		console.log("NONONONONON!")
-	}
-});
 
 
 
+function playGame(i){
+	console.log(`PlayGame: ${i}`);
+	buildQuestion(i);
+	setTimeout(flip, 1000*5);
+}
+
+for (i=0; i<triviaList.length; i++){
+	playGame(i);
+}
 
 
 
+// setTimeout(function(){
+// 	alert("Work damnit");
+// }, 1000* 2);
 
 
-
-
-
-
+// gameTimer();
 
 
 
