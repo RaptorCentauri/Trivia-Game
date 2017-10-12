@@ -13,102 +13,102 @@
 //We will achieve this with objects and arrays
 triviaList = [{
 
-	question: "Question 1",
+	question: "What City Did Oceanic Flight 815 Depart From?",
 	answers: {
-		correct: "Clark Kent",
-		answer2: "BLOR BLOR",
-		answer3: "BLARG BLARG",
-		answer4: "BLoOOOP"
+		correct: "Sydney, Autralia",
+		answer2: "Melbourne, Australia",
+		answer3: "Los Angeles, California",
+		answer4: "Honolulu, Hawaii"
 		}
 	},
 
 	{
-	question: "Question 2",
+	question: "What Are The Numbers?",
 	answers: {
-		correct: "BLAH BLAH",
-		answer2: "BLOR BLOR",
-		answer3: "BLARG BLARG",
-		answer4: "BLoOOOP"
+		correct: "4, 8, 15, 16, 23, 42",
+		answer2: "815",
+		answer3: "77",
+		answer4: "09 24 2005"
 		}
 	},
 
 	{
-	question: "Question 3",
+	question: "Where is Sayid From?",
 	answers: {
-		correct: "BLAH BLAH",
-		answer2: "BLOR BLOR",
-		answer3: "QUAAAAACKK",
-		answer4: "BLoOOOP"
+		correct: "Iraq",
+		answer2: "Iran",
+		answer3: "Egypt",
+		answer4: "Great Britain"
 		}
 	},
 
 	{
-	question: "Question 4",
+	question: "What Book Did Desmond Save to Be The Last He Would Ever Read?",
 	answers: {
-		correct: "BLAH BLAH",
-		answer2: "BLOR BLOR",
-		answer3: "BLARG BLARG",
-		answer4: "BLoOOOP"
+		correct: "Our Mutual Friend",
+		answer2: "Catch 22",
+		answer3: "One Flew Over The Cuckoos Nest",
+		answer4: "Watership Down"
 		}
 	},
 
 	{
-	question: "Question 5",
+	question: "Which Season Introduced the Flash Forward?",
 	answers: {
-		correct: "BLAH BLAH",
-		answer2: "BLOR BLOR",
-		answer3: "BLARG BLARG",
-		answer4: "BLoOOOP"
+		correct: "Season 3",
+		answer2: "Season 5",
+		answer3: "Season 1",
+		answer4: "Season 6"
 		}
 	},
 
 	{
-	question: "Question 6",
+	question: "When Did Penny Get Her Call From Desmond?",
 	answers: {
-		correct: "BLAH BLAH",
-		answer2: "BLOR BLOR",
-		answer3: "BLARG BLARG",
-		answer4: "BLoOOOP"
+		correct: "December 25, 1996",
+		answer2: "December 25, 2004",
+		answer3: "September 24, 2004",
+		answer4: "August 15, 1973"
 		}
 	},
 
 	{
-	question: "Question 7",
+	question: "What Was The Name Of The Dog?",
 	answers: {
-		correct: "BLAH BLAH",
-		answer2: "BLOR BLOR",
-		answer3: "BLARG BLARG",
-		answer4: "BLoOOOP"
+		correct: "Vincent",
+		answer2: "Fido",
+		answer3: "Jack",
+		answer4: "Nadia"
 		}
 	},
 
 	{
-	question: "Question 8",
+	question: "Who Was The First Major Character to Die? ",
 	answers: {
-		correct: "BLAH BLAH",
-		answer2: "BLOR BLOR",
-		answer3: "BLARG BLARG",
-		answer4: "BLoOOOP"
+		correct: "Boone Carlyle",
+		answer2: "Shannon Rutherford",
+		answer3: "Charlie Pace",
+		answer4: "Miles Straum"
 		}
 	},
 
 	{
-	question: "Question 9",
+	question: "Who Was Paralyzed Before They Got to the Island",
 	answers: {
-		correct: "BLAH BLAH",
-		answer2: "BLOR BLOR",
-		answer3: "BLARG BLARG",
-		answer4: "BLoOOOP"
+		correct: "John Locke",
+		answer2: "Ben Linus",
+		answer3: "Juliet Burke",
+		answer4: "Daniel Faraday"
 		}
 	},
 
 	{
-	question: "Question 10",
+	question: "What Station Was Desmond In?",
 	answers: {
-		correct: "BLAH BLAH",
-		answer2: "BLOR BLOR",
-		answer3: "BLARG BLARG",
-		answer4: "BLoOOOP"
+		correct: "The Swan",
+		answer2: "The Pearl",
+		answer3: "The Hydra",
+		answer4: "The Looking Glass"
 		}
 	},
 ];
@@ -122,72 +122,125 @@ function buildQuestion(i){
 		console.log(`turn: ${i}`);
 
 		for (key in triviaList[i].answers){
-			$(".front").append(`<button class="button" data-choice_id="${key}"><span class='answer'>${triviaList[i].answers[key]}</span></button>"`);
+			$(".front").append(`<button class='button' data-choice_id='${key}'><span class='answer'>${triviaList[i].answers[key]}</span></button>`);
 
 		}
 
 
 		$(".button").on("click", function(){
 
-			if($(this).data("choice_id") === "correct"){
-				console.log("YAYA!!!!");
-				$(".result").html("Correct!");
-				$(".answerBack").html("The answer was " + triviaList[i].answers.correct + "!");
-				// $(".card").toggleClass("flip");
-				
+			$(this).addClass(`yes`);
+
+			if($(this).hasClass(`yes`)){
+
+				if($(this).data("choice_id") === "correct"){
+					console.log("YAYA!!!!");
+					$(".result").html("Correct!");
+					$(".answerBack").html("The answer was " + triviaList[i].answers.correct + "!");
+					// $(".card").toggleClass("flip");
+					
+
+				}
+
+				else{
+					console.log("NONONONONON!");
+					$(".result").html("Wrong!");
+					console.log(triviaList[i].answers.correct);
+					$(".answerBack").html("The answer was " + triviaList[i].answers.correct + "!");
+					// $(".card").toggleClass("flip");
+				}
 
 			}
 
-			else{
-				console.log("NONONONONON!");
-				$(".result").html("Wrong!");
-				console.log(triviaList[i].answers.correct);
-				$(".answerBack").html("The answer was " + triviaList[i].answers.correct + "!");
-				// $(".card").toggleClass("flip");
+			else if (!($(this).hasClass(`yes`))){
+				$(".answerBack").html(`You Did not Select and Answer! 
+				The answer was ${triviaList[i].answers.correct}!`);
 			}
 		});
+
+
 
 		// setTimeout(function(){$(".card").toggleClass("flip");}, 1000*3);
 };
 
 
+function flip(i){
+	// console.log(`{======Begin Flip====}`);
 
-
-function flip(){
-	console.log(`{======Begin Flip====}`);
-
-	console.log(`flip: ${i}`);
 	$(".card").toggleClass("flip");
-	setTimeout(flipBack, 1000*5);
-	console.log(`{======End Flip====}`);
+	setTimeout(function() {flipBack(i);}, 1000*3);
+	// console.log(`{======End Flip====}`);
 
 }
 
-function flipBack(){
-	console.log(`{======Begin FlipBack====}`);
+function flipBack(i){
+	// console.log(`{======Begin FlipBack====}`);
 
-	console.log(`flipBack: ${i}`);
-	$(".front").html("");
-	$(".card").toggleClass("flip");	
-	console.log(`{======End FlipBack====}`);
+	$(".question").html("");
+	$(".button").remove();
+	$(".card").toggleClass("flip");
+	$(".answerBack").html("");
+
+	if(i>0){
+		playGame(i-1);
+	}
+
+	else{
+		console.log(`We're done`);
+		$(".front").html(`Thanks for playing!`);
+
+	}
+	// console.log(`{======End FlipBack====}`);
 
 }
-
-
-
 
 
 function playGame(i){
 	console.log(`PlayGame: ${i}`);
 	buildQuestion(i);
-	setTimeout(flip, 1000*5);
+	setTimeout(function() {flip(i);}, 1000*3);
+	
+	// i++;
 }
 
-for (i=0; i<triviaList.length; i++){
-	console.log(`{======Begin Loop====}`);
-	playGame(i);
-	console.log(`{======End Loop=====}`);
-}
+playGame(triviaList.length-1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// for (i=0; i<triviaList.length; i++){
+// 	console.log(`{======Begin Loop====}`);
+// 	playGame(i);
+// 	console.log(`{======End Loop=====}`);
+// }
+
+
+// for (var i=0;i<=10;i++) {
+//    (function(ind) {
+//        setTimeout(function(){console.log((ind + 1)*1000, ':', ind);}, 1000 * (ind+1) );
+//    })(i);
+// }
+
 
 
 
